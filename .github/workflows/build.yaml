@@ -1,0 +1,19 @@
+# This workflow will build a Java project with Maven
+
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11.0.7
+      - name: Build with Maven
+        run: mvn -B package -DskipTests
