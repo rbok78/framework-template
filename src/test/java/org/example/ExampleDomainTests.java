@@ -10,6 +10,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+import java.time.Instant;
+
+import static org.example.utils.Constants.GLOBAL_NETWORK_IDLE_TIMEOUT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Epic("As a tester, I want to have an example page so that I can test it")
@@ -44,6 +48,35 @@ public class ExampleDomainTests extends BaseTest {
         final TheOnlyPanel theOnlyPanel = examplePage.getTheOnlyPanel();
         final String text = theOnlyPanel.getFirstParagraphText();
         Assertions.assertTrue(text.startsWith("This domain is for use in illustrative examples"));
+    }
+
+    @Test
+    @Story("As a tester, I want to know when all requests are finished so that I can wait for it")
+    @DisplayName("Wait for network idle test")
+    public void waitForNetworkIdleTest() {
+        final ExamplePage examplePage = new ExamplePage();
+        final Instant start = Instant.now();
+        examplePage.waitForNetworkIdle();
+        final Duration duration = Duration.between(start, Instant.now());
+        Assertions.assertTrue(duration.compareTo(GLOBAL_NETWORK_IDLE_TIMEOUT) >= 0);
+    }
+
+    @Test
+    @Story("As a tester, I want to get a timestamp so that I can filter requests")
+    @DisplayName("Get timestamp test")
+    public void getDomHighResTimeStampTest() {
+        final ExamplePage examplePage = new ExamplePage();
+        final double timestamp = examplePage.getDomHighResTimeStamp();
+        Assertions.assertTrue(timestamp > 0);
+    }
+
+    @Test
+    @Story("As a tester, I want to know when a request is finished so that I can wait for it")
+    @DisplayName("Wait for request test")
+    public void waitForRequestTest() {
+        final ExamplePage examplePage = new ExamplePage();
+        Assertions.assertDoesNotThrow(() -> examplePage
+                .waitForRequest("favicon", 0.0, 1));
     }
 
     @Test
