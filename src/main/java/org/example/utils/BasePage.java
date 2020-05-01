@@ -134,6 +134,19 @@ public abstract class BasePage {
     }
 
     /**
+     * Waits for specific requests to finish.
+     *
+     * @param action the front-end action to run
+     * @param url    the fragment of the request URL
+     * @param count  the minimum number of requests to find
+     */
+    public void waitForRequest(final Action action, final String url, final int count) {
+        final double timestamp = getDomHighResTimeStamp();
+        action.run();
+        waitForRequest(url, timestamp, count);
+    }
+
+    /**
      * Returns one element for a given selector.
      *
      * @param selector the selector
