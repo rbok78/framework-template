@@ -9,12 +9,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.opencv.core.Point;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
 
 import static org.example.utils.Constants.GLOBAL_NETWORK_IDLE_TIMEOUT;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Epic("As a tester, I want to have an example page so that I can test it")
 @DisplayName("Example domain test suite")
@@ -27,7 +28,7 @@ public class ExampleDomainTests extends BaseTest {
     public void pageTitleTest() {
         final ExamplePage examplePage = new ExamplePage();
         final String pageTitle = examplePage.getExamplePageTitle();
-        assertEquals("Example Domain", pageTitle);
+        Assertions.assertEquals("Example Domain", pageTitle);
     }
 
     @Test
@@ -37,7 +38,7 @@ public class ExampleDomainTests extends BaseTest {
         final ExamplePage examplePage = new ExamplePage();
         final TheOnlyPanel theOnlyPanel = examplePage.getTheOnlyPanel();
         final String text = theOnlyPanel.getMoreInformationLinkText();
-        assertEquals("More information...", text);
+        Assertions.assertEquals("More information...", text);
     }
 
     @Test
@@ -80,9 +81,19 @@ public class ExampleDomainTests extends BaseTest {
     }
 
     @Test
+    @Story("As a tester, I want to find a template in the canvas so that I click on it")
+    @DisplayName("Match template test")
+    public void matchTemplateTest() {
+        final ExamplePage examplePage = new ExamplePage();
+        final TheOnlyPanel theOnlyPanel = examplePage.getTheOnlyPanel();
+        final List<Point> centralPoints = theOnlyPanel.findMoreInformationLink();
+        Assertions.assertEquals(1, centralPoints.size());
+    }
+
+    @Test
     @Story("As a tester, I want to log a screenshot for failed tests so that I can view it")
     @DisplayName("Fail test with screenshot")
     public void failTestWithScreenshot() {
-        assertEquals("foo", "boo");
+        Assertions.assertEquals("foo", "boo");
     }
 }
