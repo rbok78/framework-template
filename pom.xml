@@ -5,7 +5,7 @@
 
   <groupId>org.example</groupId>
   <artifactId>framework-template</artifactId>
-  <version>1.1.0-SNAPSHOT</version>
+  <version>1.1.1-SNAPSHOT</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -207,8 +207,8 @@
                   junit.jupiter.execution.parallel.enabled = true
                   junit.jupiter.execution.parallel.mode.default = concurrent
                   junit.jupiter.execution.parallel.mode.classes.default = concurrent
-                  junit.jupiter.execution.parallel.config.strategy = fixed
-                  junit.jupiter.execution.parallel.config.fixed.parallelism = 1
+                  junit.jupiter.execution.parallel.config.strategy = custom
+                  junit.jupiter.execution.parallel.config.custom.class = org.example.utils.Strategy
                 </configurationParameters>
               </properties>
             </configuration>
