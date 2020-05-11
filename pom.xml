@@ -5,7 +5,7 @@
 
   <groupId>org.example</groupId>
   <artifactId>framework-template</artifactId>
-  <version>1.1.1-SNAPSHOT</version>
+  <version>1.2.0-SNAPSHOT</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -13,14 +13,20 @@
     <minimum.maven.version>3.6.1</minimum.maven.version>
     <allure.version>2.13.3</allure.version>
     <aspectj.version>1.9.5</aspectj.version>
-    <commons.version>2.6</commons.version>
+    <jackson.version>2.11.0</jackson.version>
     <junit.version>5.7.0-M1</junit.version>
     <log4j.version>2.13.2</log4j.version>
     <opencv.version>4.3.0-1</opencv.version>
+    <rest.version>4.3.0</rest.version>
     <selenium.version>4.0.0-alpha-5</selenium.version>
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>${rest.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
@@ -52,14 +58,19 @@
       <version>${allure.version}</version>
     </dependency>
     <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>${commons.version}</version>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-rest-assured</artifactId>
+      <version>${allure.version}</version>
     </dependency>
     <dependency>
       <groupId>org.openpnp</groupId>
       <artifactId>opencv</artifactId>
       <version>${opencv.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
     </dependency>
   </dependencies>
 

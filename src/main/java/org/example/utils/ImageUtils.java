@@ -1,7 +1,6 @@
 package org.example.utils;
 
 import nu.pattern.OpenCV;
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.opencv.core.Core;
@@ -14,7 +13,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -28,24 +26,6 @@ public class ImageUtils {
     // Load the native opencv library
     static {
         OpenCV.loadShared();
-    }
-
-    /**
-     * Screenshots an element and saves it to the temp directory.
-     *
-     * @param element the element to screenshot
-     * @return the screenshot
-     */
-    public static File screenshotElement(final WebElement element) {
-        try {
-            final File screenshot = element.getScreenshotAs(OutputType.FILE);
-            final File imageFile = File.createTempFile("img", ".png");
-            FileUtils.copyFile(screenshot, imageFile);
-            logger.debug("Created file " + imageFile.getAbsolutePath());
-            return imageFile;
-        } catch (final IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     /**
@@ -117,15 +97,16 @@ public class ImageUtils {
             final String resourcePath = "templates/" + templateName + ".png";
             final URL resource = ClassLoader.getSystemClassLoader().getResource(resourcePath);
             if (resource == null) throw new RuntimeException("Failed to load " + resourcePath);
-            final String absolutePath = Paths.get(resource.toURI()).toFile().getAbsolutePath();
-            tmp = Imgcodecs.imread(absolutePath, Imgcodecs.IMREAD_COLOR);
+            final String templatePath = Paths.get(resource.toURI()).toFile().getAbsolutePath();
+            tmp = Imgcodecs.imread(templatePath, Imgcodecs.IMREAD_COLOR);
         } catch (final java.net.URISyntaxException e) {
             throw new RuntimeException(e);
         }
 
         // Screenshot element
-        final File imageFile = screenshotElement(element);
-        final Mat img = Imgcodecs.imread(imageFile.getAbsolutePath(), Imgcodecs.IMREAD_COLOR);
+        final File screenshot = element.getScreenshotAs(OutputType.FILE);
+        final String screenshotPath = screenshot.getAbsolutePath();
+        final Mat img = Imgcodecs.imread(screenshotPath, Imgcodecs.IMREAD_COLOR);
 
         // Match template
         return matchTemplate(img, tmp, threshold);
