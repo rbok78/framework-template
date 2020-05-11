@@ -17,9 +17,9 @@ import java.util.List;
 
 import static org.example.utils.Constants.GLOBAL_NETWORK_IDLE_TIMEOUT;
 
-@Epic("As a tester, I want to have an example page so that I can test it")
-@DisplayName("Example domain test suite")
-public class ExampleDomainTests extends BaseTest {
+@Epic("As a tester, I want to have an example app so that I can test it")
+@DisplayName("Example gui test suite")
+public class ExampleGuiTests extends BaseTest {
 
     @Test
     @Story("As a tester, I want to see a meaningful page title so that I can test it")
