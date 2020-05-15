@@ -5,36 +5,36 @@ import org.junit.platform.engine.support.hierarchical.ParallelExecutionConfigura
 import org.junit.platform.engine.support.hierarchical.ParallelExecutionConfigurationStrategy;
 
 public class Strategy implements ParallelExecutionConfiguration,
-        ParallelExecutionConfigurationStrategy {
+    ParallelExecutionConfigurationStrategy {
 
-    @Override
-    public int getParallelism() {
-        return Integer.parseInt(Configuration.CONCURRENCY);
-    }
+  @Override
+  public int getParallelism() {
+    return Integer.parseInt(Configuration.CONCURRENCY);
+  }
 
-    @Override
-    public int getMinimumRunnable() {
-        return Integer.parseInt(Configuration.CONCURRENCY);
-    }
+  @Override
+  public int getMinimumRunnable() {
+    return Integer.parseInt(Configuration.CONCURRENCY);
+  }
 
-    @Override
-    public int getMaxPoolSize() {
-        return Integer.parseInt(Configuration.CONCURRENCY);
-    }
+  @Override
+  public int getMaxPoolSize() {
+    return Integer.parseInt(Configuration.CONCURRENCY);
+  }
 
-    @Override
-    public int getCorePoolSize() {
-        return Integer.parseInt(Configuration.CONCURRENCY);
-    }
+  @Override
+  public int getCorePoolSize() {
+    return Integer.parseInt(Configuration.CONCURRENCY);
+  }
 
-    @Override
-    public int getKeepAliveSeconds() {
-        return 30;
-    }
+  @Override
+  public int getKeepAliveSeconds() {
+    return 30;
+  }
 
-    @Override
-    public ParallelExecutionConfiguration createConfiguration(
-            final ConfigurationParameters configurationParameters) {
-        return this;
-    }
+  @Override
+  public ParallelExecutionConfiguration createConfiguration(
+      final ConfigurationParameters configurationParameters) {
+    return this;
+  }
 }
