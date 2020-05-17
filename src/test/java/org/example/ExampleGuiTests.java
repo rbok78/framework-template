@@ -93,6 +93,7 @@ public class ExampleGuiTests extends BaseTest {
   @Story("As a tester, I want to log a screenshot for failed tests so that I can view it")
   @DisplayName("Fail test with screenshot")
   public void failTestWithScreenshot() {
-    Assertions.assertEquals("foo", "boo");
+    final String actualValue = "boo";
+    Assertions.assertEquals("foo", actualValue);
   }
 }

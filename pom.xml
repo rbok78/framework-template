@@ -6,12 +6,13 @@
 
   <groupId>org.example</groupId>
   <artifactId>framework-template</artifactId>
-  <version>1.4.0-SNAPSHOT</version>
+  <version>1.5.0-SNAPSHOT</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>11</maven.compiler.release>
     <minimum.maven.version>3.6.1</minimum.maven.version>
+    <sonar.java.source>${maven.compiler.release}</sonar.java.source>
     <allure.version>2.13.3</allure.version>
     <aspectj.version>1.9.5</aspectj.version>
     <jackson.version>2.11.0</jackson.version>
@@ -116,6 +117,11 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>3.0.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.7.0.1746</version>
       </plugin>
 
       <!-- Collects results for Allure report -->
