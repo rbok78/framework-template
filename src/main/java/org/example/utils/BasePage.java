@@ -49,7 +49,7 @@ public abstract class BasePage {
         .pollingEvery(GLOBAL_POLLING_INTERVAL)
         .ignoring(StaleElementReferenceException.class)
         .ignoring(NoSuchElementException.class)
-        .until(p -> p.findElements(selector).size() > 0);
+        .until(p -> !p.findElements(selector).isEmpty());
   }
 
   /**
@@ -80,7 +80,7 @@ public abstract class BasePage {
     final JavascriptExecutor executor = (JavascriptExecutor) BaseTest.getDriver();
     final String result = executor.executeScript(script).toString();
     final double startTime = Double.parseDouble(result);
-    logger.debug("Last performance entry started at " + startTime);
+    logger.debug("Last performance entry started at {}", startTime);
     return startTime;
   }
 
@@ -103,7 +103,7 @@ public abstract class BasePage {
     }
 
     final String duration = Long.toString(System.currentTimeMillis() - startTime);
-    logger.debug("Waited " + duration + " milliseconds for network idle");
+    logger.debug("Waited {} milliseconds for network idle", duration);
   }
 
   /**
@@ -116,7 +116,7 @@ public abstract class BasePage {
     final String script = "return window.performance.now();";
     final JavascriptExecutor executor = (JavascriptExecutor) BaseTest.getDriver();
     final double timestamp = Double.parseDouble(executor.executeScript(script).toString());
-    logger.debug("Timestamp is " + timestamp);
+    logger.debug("Timestamp is {}", timestamp);
     return timestamp;
   }
 

@@ -30,6 +30,13 @@ public class ImageUtils {
   }
 
   /**
+   * Prevents this class to be instantiated.
+   */
+  private ImageUtils() {
+    throw new AssertionError();
+  }
+
+  /**
    * Finds all matches in the image.
    *
    * @param img       the image to be searched
@@ -99,7 +106,7 @@ public class ImageUtils {
       final String templatePath = Paths.get(resource.toURI()).toFile().getAbsolutePath();
       tmp = Imgcodecs.imread(templatePath, Imgcodecs.IMREAD_COLOR);
     } catch (final java.net.URISyntaxException e) {
-      throw new RuntimeException(e);
+      throw new AssertionError();
     }
 
     // Screenshot element
