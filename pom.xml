@@ -17,7 +17,7 @@
     <aspectj.version>1.9.5</aspectj.version>
     <jackson.version>2.11.0</jackson.version>
     <junit.version>5.7.0-M1</junit.version>
-    <log4j.version>2.13.3</log4j.version>
+    <log4j.version>2.16.0</log4j.version>
     <opencv.version>4.3.0-2</opencv.version>
     <rest.version>4.3.0</rest.version>
     <selenium.version>4.0.0-alpha-5</selenium.version>
