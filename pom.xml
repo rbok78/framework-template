@@ -15,7 +15,7 @@
     <sonar.java.source>${maven.compiler.release}</sonar.java.source>
     <allure.version>2.13.3</allure.version>
     <aspectj.version>1.9.5</aspectj.version>
-    <jackson.version>2.11.0</jackson.version>
+    <jackson.version>2.12.7.1</jackson.version>
     <junit.version>5.7.0-M1</junit.version>
     <log4j.version>2.13.3</log4j.version>
     <opencv.version>4.3.0-2</opencv.version>
